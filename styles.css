@@ -270,6 +270,7 @@ summary {
   margin-left: -60px;
   border: outset 3px lightblue;
   transition: 0.2s;
+  pointer-events: none;
 }
 
 .UP .UP-tooltip::after {

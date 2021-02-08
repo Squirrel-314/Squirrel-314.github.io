@@ -629,7 +629,7 @@ function callAlert(text) {
    alert.style.opacity = "1";
    alert.style.pointerEvents = "auto";
    alert.textContent = text;
-   setTimeout(hideAlert => { alert.style.opacity = "0"; alert.style.pointerEvents = "none"; }, 6000);
+   setTimeout(hideAlert => { alert.style.opacity = "0"; alert.style.pointerEvents = "none"; }, 10000);
 }
 
 function flipRotateAlert() {
