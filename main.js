@@ -80,6 +80,9 @@ const initialGameData = {
    mergerGold: 0,
    buyMergerCost: 200000000000000,
    mergerNumber: 0,
+// Unlocked status
+   dwarves: "locked",
+   dwarvesPrice: 800,
 // Player Name
    playerName: null,
 // Time
@@ -263,6 +266,14 @@ function acquireAsset(asset, assetCost, costMultiplier) {
    }
 }
 
+function unlock(asset) {
+   console.log("hi");
+   if (gameData.gold >= gameData[asset + "Price"]) {
+      gameData.gold -= gameData[asset + "Price"]
+      gameData[asset] = "unlocked";
+   }
+}
+
 //==========================================================
 // Summoning Circles
 //==========================================================
@@ -431,6 +442,7 @@ var checkForUpgrades = window.setInterval(function() {
    if (gameData.pickaxeNumber >= 5 && !upgradeData.b2) { document.getElementById("b2").style.display = "block"; }
    if (gameData.pickaxeNumber >= 15 && !upgradeData.b3) { document.getElementById("b3").style.display = "block"; }
    if (gameData.pickaxeNumber >= 25 && !upgradeData.b4) { document.getElementById("b4").style.display = "block"; }
+   if (gameData.gold >= (gameData.hireDwarfCost / 2) && gameData.dwarves === "locked") { document.getElementById("unlockDwarves").style.display = "block"; }
    if (gameData.dwarfNumber >= 1 && !upgradeData.c1) { document.getElementById("c1").style.display = "block"; }
    if (gameData.dwarfNumber >= 5 && !upgradeData.c2) { document.getElementById("c2").style.display = "block"; }
    if (gameData.dwarfNumber >= 15 && !upgradeData.c3) { document.getElementById("c3").style.display = "block"; }
@@ -536,8 +548,8 @@ var buildColorLoop = window.setInterval(function() {
    if (gameData.gold >= gameData.buyPickaxeCost) { pickaxeBox.style.backgroundColor = regColor; }
    else { pickaxeBox.style.backgroundColor = notEnoughColor; }
    let dwarfBox = document.getElementById("hireDwarf");
-   if (gameData.gold >= (gameData.hireDwarfCost / 2) || gameData.dwarfNumber >= 1) { dwarfBox.style.display = "flex"; }
-   if (gameData.gold >= gameData.hireDwarfCost) { dwarfBox.style.backgroundColor = regColor; }
+   if (gameData.gold >= (gameData.hireDwarfCost / 2) && gameData.dwarves === "unlocked" || gameData.dwarfNumber >= 1) { dwarfBox.style.display = "flex"; }
+   if (gameData.gold >= gameData.hireDwarfCost && gameData.dwarves === "unlocked") { dwarfBox.style.backgroundColor = regColor; }
    else { dwarfBox.style.backgroundColor = notEnoughColor; }
    let gooseBox = document.getElementById("hireGoose");
    if (gameData.gold >= (gameData.hireGooseCost / 2) || gameData.gooseNumber >= 1) { gooseBox.style.display = "flex";  }

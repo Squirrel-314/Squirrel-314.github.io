@@ -107,7 +107,7 @@ body {
 }
 
 .flip-rotate-alert {
-   animation: flip-rotate-alert 6s;
+   animation: flip-rotate-alert 10s;
    pointer-events: none;
 }
 
@@ -116,7 +116,7 @@ body {
       transform: rotate(0deg) translate(0px) scale(1);
       opacity: 1;
    }
-   25% {
+   15% {
       transform: rotate(-35deg) translate(-100px, -250px) scale(.6);
       opacity: 0;
    }
@@ -186,6 +186,7 @@ Section 1 | Astroid and Player Information
    background-size: 100% auto;
    text-shadow: -2px 2px 2px #262626;
    color: lightyellow;
+   border-radius: 6px;
 }
 
 .basic-info-pumped {
@@ -230,6 +231,7 @@ details, #news {
    font-family: merriweather-serif;
    padding: 5px;
    z-index: -1;
+   border-radius: 2px;
 }
 
 summary {
@@ -287,6 +289,58 @@ summary {
 .UP:hover .UP-tooltip {
   opacity: 1;
   z-index: 1;
+}
+
+.unlock {
+   border: outset 4px gold;
+}
+
+.unlock:before {
+   content: "";
+   position: absolute;
+   top: 0;
+   right: 0;
+   bottom: 0;
+   left: 0;
+   height: 100%;
+   width: 100%;
+   background-color: rgba(255, 202, 0, 0.2);
+}
+
+.unlock:after {
+   content: "";
+   position: absolute;
+   top: -25%;
+   bottom: 0;
+   left: 0;
+   height: 150%;
+   width: 8%;
+   transform: rotate(45deg);
+   background-color: rgba(255, 255, 255);
+   filter: blur(15px);
+   animation: shiny 1.5s infinite;
+}
+
+@keyframes shiny {
+   0% {
+      opacity: 0;
+      left: 0;
+   }
+   10% {
+      opacity: 0.5;
+      left: 0;
+   }
+   50% {
+      opacity: 1;
+   }
+   90% {
+      opacity: 0;
+      left: 100%;
+   }
+   100% {
+      opacity: 0;
+      left: 100%;
+   }
 }
 
 #a2 {
